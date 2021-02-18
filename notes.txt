@@ -1,0 +1,6 @@
+To calculate energy in kJ:
+
+1 gram of protein = 17kJ/g = 4 kcal/g
+1 gram of carbohydrate/g = 4 kcal/g
+1 gram of fat = 37 kJ/g = 9 kcal/g
+
