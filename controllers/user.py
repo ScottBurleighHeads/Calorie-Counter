@@ -1,12 +1,13 @@
 from models.user import User 
+from schemas.User_schema import user_schema, users_schema 
 from main import db
-from flask import Blueprint,jsonify,request,json
+from flask import Blueprint,jsonify,request,json,redirect
 user = Blueprint("user",__name__,url_prefix="/user")
 
 
 @user.route("/create_user",methods=["POST"])
 def create_user():
-    user_fields = request.json
+    user_fields = user_schema.load(request.json)
     new_user = User()
     new_user.username = user_fields["username"]
     new_user.password = user_fields["password"]
@@ -16,5 +17,5 @@ def create_user():
     new_user.phone = user_fields["phone"]
     db.session.add(new_user)
     db.session.commit()
-    
-    return "Success"
+    return jsonify(user_schema.dump(new_user))
+

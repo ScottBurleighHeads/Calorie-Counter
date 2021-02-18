@@ -4,8 +4,12 @@ load_dotenv()
 from flask import Flask
 app = Flask(__name__)
 
+from flask_marshmallow import Marshmallow
+ma = Marshmallow()
+
 from database import init_db
 db = init_db(app)
+
 
 from controllers import registerable_controllers
 for controller in registerable_controllers:
