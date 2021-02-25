@@ -16,3 +16,4 @@ Flask-WTF requires a secret key to be configured in the application because this
 is part of the mechanism the extension uses to protect all forms against cross-site
 request forgery (CSRF) attacks.
 
+p46 form class field types and validators
