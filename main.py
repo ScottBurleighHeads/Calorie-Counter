@@ -1,8 +1,10 @@
 from dotenv import load_dotenv
 load_dotenv()
 
+import os
 from flask import Flask
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.environ.get("SECRET")
 
 from flask_marshmallow import Marshmallow
 ma = Marshmallow()

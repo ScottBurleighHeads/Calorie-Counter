@@ -4,3 +4,15 @@ To calculate energy in kJ:
 1 gram of carbohydrate/g = 4 kcal/g
 1 gram of fat = 37 kJ/g = 9 kcal/g
 
+@app.errorhandler(404)
+def page_not_found(e):
+return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+return render_template('500.html'), 500
+
+Flask-WTF requires a secret key to be configured in the application because this key
+is part of the mechanism the extension uses to protect all forms against cross-site
+request forgery (CSRF) attacks.
+
