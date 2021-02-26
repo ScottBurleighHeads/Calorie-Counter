@@ -17,3 +17,8 @@ is part of the mechanism the extension uses to protect all forms against cross-s
 request forgery (CSRF) attacks.
 
 p46 form class field types and validators
+
+Deployment to Heroku video:
+    https://www.youtube.com/watch?v=EpXANkYbK4g
+Do this first if your app is in a subfolder:
+    https://stackoverflow.com/questions/39197334/automated-heroku-deploy-from-subfolder
