@@ -9,48 +9,32 @@
             <h4 class="m-3">Check calories</h4>
           </div>
           <div class="col-LG">
-            <input class="m-3 form-control mr-sm-2"  type="search" placeholder="Search" aria-label="Search">
+            <input class="m-3 form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </div>
     </form>
   </nav>
   <div class="container">
         <div class="container">
+          {% set num = 3 %}
+          {% for z in range(length//3) %}
+          {% set num = z*num %}
           <div class="row">
+            {% for i in range(0+num,3+num) %}
             <div class="col-sm">
                 {% if values %}
-                  <h1>{{ values[0]["food"]["label"] }}</h1>
-                  <h4>Total calories: {{ values[0]["food"]["nutrients"]['ENERC_KCAL'] }}</h4>
-                  {% if values[0]["food"]["image"] is defined %}
-                    <img src='{{ values[0]["food"]["image"] }}' alt="Responsive image" class="img-thumbnail"> 
+                  <h1>{{ values[i]["food"]["label"] }}</h1>
+                  <h4>Total calories: {{ values[i]["food"]["nutrients"]['ENERC_KCAL'] }}</h4>
+                  {% if values[i]["food"]["image"] is defined %}
+                    <img src='{{ values[i]["food"]["image"] }}' alt="Responsive image" class="img-thumbnail"> 
                   {% else %}
                     <p>No image</p>
                   {% endif %}
                 {% endif %}
             </div>
-            <div class="col-sm">
-              {% if values %}
-                  <h1>{{ values[1]["food"]["label"] }}</h1>
-                  <h4>Total calories: {{ values[1]["food"]["nutrients"]['ENERC_KCAL'] }}</h4>
-                  {% if values[1]["food"]["image"] is defined %}
-                    <img src='{{ values[1]["food"]["image"] }}' alt="Responsive image" class="img-thumbnail"> 
-                  {% else %}
-                    <p>No image</p>
-                  {% endif %}
-                {% endif %}
-            </div>
-            <div class="col-sm">
-              {% if values %}
-                  <h1>{{ values[2]["food"]["label"] }}</h1>
-                  <h4>Total calories: {{ values[2]["food"]["nutrients"]['ENERC_KCAL'] }}</h4>
-                  {% if values[2]["food"]["image"] is defined %}
-                    <img src='{{ values[2]["food"]["image"] }}' alt="Responsive image" class="img-thumbnail"> 
-                  {% else %}
-                    <p>No image</p>
-                  {% endif %}
-                {% endif %}
-            </div>
+            {% endfor %}  
           </div>
+          {% endfor %}
         </div>
         
   </div>
