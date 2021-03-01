@@ -2,14 +2,14 @@
 
 {% block content %} 
   <nav class="navbar navbar-light bg-light">
-    <form class="form-inline">
+    <form class="form-inline" method="POST" action="{{ url_for('food.food_home') }}">
       <div class="container">
         <div class="row">
           <div class="col-LG">
             <h4 class="m-3">Check calories</h4>
           </div>
           <div class="col-LG">
-            <input class="m-3 form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <input class="m-3 form-control mr-sm-2" name="search" type="search" placeholder="search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </div>
     </form>
