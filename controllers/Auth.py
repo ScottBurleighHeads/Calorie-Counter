@@ -1,7 +1,11 @@
 from flask import Blueprint,json, render_template,request
 import requests
-auth = Blueprint("auth",__name__,url_prefix="login")
+auth = Blueprint("auth",__name__,url_prefix="/login")
 
-@auth.route("/",method=["POST"])
+@auth.route("/",methods=["GET"])
 def login():
-    r
+    return "Hello"
+
+@auth.route("/create_user")
+def create_user():
+    pass

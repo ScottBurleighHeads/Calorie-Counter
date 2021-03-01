@@ -26,9 +26,15 @@
                 {% if values %}
                   <h1>{{ values[i]["food"]["label"] }}</h1>
                   <h6>Calories: {{ values[i]["food"]["nutrients"]['ENERC_KCAL']|int }}</h4>
+                  {% if values[i]["food"]["nutrients"]['CHOCDF'] is defined %}
                   <h6>Carbs: {{ values[i]["food"]["nutrients"]['CHOCDF']|int }}</h6>
+                  {% endif %}
+                  {% if values[i]["food"]["nutrients"]['PROCNT'] is defined %}  
                   <h6>Protein: {{ values[i]["food"]["nutrients"]['PROCNT']|int }}</h6>
+                  {% endif %}
+                  {% if values[i]["food"]["nutrients"]['FAT'] is defined %}
                   <h6>Fat: {{ values[i]["food"]["nutrients"]['FAT']|int }}</h6>
+                  {% endif %}
                   {% if values[i]["food"]["image"] is defined %}
                     <img src='{{ values[i]["food"]["image"] }}' alt="Responsive image" class="img-thumbnail"> 
                   {% else %}
