@@ -6,6 +6,3 @@ auth = Blueprint("auth",__name__,url_prefix="/login")
 def login():
     return "Hello"
 
-@auth.route("/create_user")
-def create_user():
-    pass
