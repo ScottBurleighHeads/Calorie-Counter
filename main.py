@@ -22,7 +22,7 @@ def create_app():
     db.init_app(app)
     ma.init_app(app)
 
-    from commands import db_commands
+    from commands import db_commands        # They need context
     app.register_blueprint(db_commands)
 
     from controllers import registerable_controllers

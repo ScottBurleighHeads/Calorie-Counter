@@ -28,3 +28,31 @@ Do this first if your app is in a subfolder:
           <input type="password" name="password" placeholder="Password">
           <button>Log in</button>
       </form> -->
+
+Testing: 
+
+Flask have three levels of fixtures. 
+
+Module fixtures. Run before and after tests
+Class based fixtures.
+
+Testing:
+
+Change FLASK_ENV=testing
+Change DB_URI=To testing database
+
+Testing runs in parallel so do not have one test rely on another
+
+https://werkzeug.palletsprojects.com/en/1.0.x/test/#werkzeug.test.Client
+
+assertEqual(response.status_code,200)
+assertIsInstance(data,list)
+assertEqual(len(data),2)
+
+def test_get_shelters()
+    shelter = Shelter.query.first()
+    response = self.client.get(f"/shelters/{shelter.id}")
+
+    data = response.get_json()
+    assertEqual(data['city'],"Brisbane")
+    
