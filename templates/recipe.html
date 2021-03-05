@@ -1,4 +1,13 @@
 {% extends "layout.html" %}
 {% block content %} 
+    {% for i in range(length) %}
 
+        <h3>{{ Recipe_data[i]["recipe"]["label"] }}</h3>
+        <h3>Ingredients:</h3>
+        <ul>
+            {% for item in Recipe_data[i]["recipe"]["ingredientLines"] %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
 {% endblock %}
