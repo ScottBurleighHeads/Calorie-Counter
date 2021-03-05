@@ -25,7 +25,8 @@ def recipe_search():
     
     APP_ID = os.environ.get("APP_ID_RECIPE")
     APP_KEY = os.environ.get("APP_KEY_RECIPE")
-    response = requests.get(f"https://api.edamam.com/search?q=lactation cookies&app_id={APP_ID}&app_key={APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free")
+    response = requests.get(f"https://api.edamam.com/search?q=banana bread&app_id={APP_ID}&app_key={APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free")
     dict_response=json.loads(response.text)
     length = len(dict_response["hits"])
+
     return render_template("recipe.html",Recipe_data=dict_response["hits"],length=length)
