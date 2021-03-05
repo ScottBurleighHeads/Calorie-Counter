@@ -17,9 +17,9 @@
                         <div class="col-sm">
                             {% set total_weight = Recipe_data[i]["recipe"]["totalWeight"] %}
                             <p class="p-0 m-0">{{ ((Recipe_data[i]["recipe"]["calories"]//total_weight)*100)|int }} Kcal</p>
-                            <p class="p-0 m-0">{{ ((Recipe_data[i]["recipe"]["calories"]//total_weight)*100) }} g</p>
-                            <p class="p-0 m-0">{{ ((Recipe_data[i]["recipe"]["calories"]//total_weight)*100) }} g</p>
-                            <p class="p-0 m-0">{{ ((Recipe_data[i]["recipe"]["totalNutrients"]["FAT"]["quantity"]/Recipe_data[i]["recipe"]["totalWeight"])*100)|round(2) }} g</p>
+                            <p class="p-0 m-0">{{ ((Recipe_data[i]["recipe"]["totalNutrients"]["PROCNT"]["quantity"]/total_weight)*100)|round(2) }} g</p>
+                            <p class="p-0 m-0">{{ ((Recipe_data[i]["recipe"]["totalNutrients"]["CHOCDF"]["quantity"]/total_weight)*100)|round(2) }} g</p>
+                            <p class="p-0 m-0">{{ ((Recipe_data[i]["recipe"]["totalNutrients"]["FAT"]["quantity"]/total_weight)*100)|round(2) }} g</p>
                         </div>
                     </div>
                 </div>
