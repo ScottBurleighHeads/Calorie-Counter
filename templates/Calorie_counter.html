@@ -6,7 +6,7 @@
       <div class="container">
         <div class="row">
           <div class="col-LG">
-            <h4 class="m-3">Check calories</h4>
+            <h4 class="m-3">Check calories (100g):</h4>
           </div>
           <div class="col-LG">
             <input class="m-3 form-control mr-sm-2" name="search" type="search" placeholder="search" aria-label="Search">
@@ -22,7 +22,7 @@
           {% set num = z*num %}
           <div class="row">
             {% for i in range(0+num,3+num) %}
-            <div class="col-sm">
+            <div class="col-sm ">
                 {% if values %}
                   <h1>{{ values[i]["food"]["label"] }}</h1>
                   <h6>Calories: {{ values[i]["food"]["nutrients"]['ENERC_KCAL']|int }}</h4>
