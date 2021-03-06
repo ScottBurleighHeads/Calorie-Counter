@@ -7,20 +7,28 @@ from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_bcrypt import Bcrypt
+from flask_jwt_extended import JWTManager
+
 
 db = SQLAlchemy()
 ma = Marshmallow()
 bcrypt = Bcrypt()
+jwt = JWTManager()
+
+
 # Create app is used so the test can no when to start up the app
 # create_app is convetion to flask which is the factory pattern
+
 def create_app():
 
     app = Flask(__name__)
     app.config.from_object("default_settings.app_config")
+    
     bcrypt.init_app(app)
-
     db.init_app(app)
     ma.init_app(app)
+    jwt.init_app(app)
+    
 
     from commands import db_commands        # They need context
     app.register_blueprint(db_commands)

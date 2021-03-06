@@ -20,7 +20,14 @@ class DevelopmentConfig(Config):
     DEBUG = True
 
 class ProductionConfig(Config):
-    pass 
+    @property
+    def JWT_SECRET_KEY(self):
+        value = os.environ.get("SECRET")
+
+        if not value:
+            raise ValueError("JWT Secret Key is not set")
+        
+        return value
 
 class TestingConfig(Config):
     TESTING=True
