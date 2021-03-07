@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %} 
+<div class="container ">
 <div class="sidenav">
     <div class="login-main-text">
        <h2>Calorie Counter<br> Login Page</h2>
@@ -20,9 +21,10 @@
              </div>
              <button type="submit" class="btn btn-black">Login</button>
              
-             <button type="submit" class="btn btn-secondary" formaction="{{ url_for('auth.display_register') }}">Register</button>
+             <button type="submit" class="btn btn-secondary" formaction="{{ url_for('auth.display_register') }}" >Register</button>
           </form>
        </div>
     </div>
+   </div>
  </div>
 {% endblock %}
