@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
             <div class="col-LG">
-                <h4 class="m-3">Search recipes</h4>
+                <h4 class="m-3">Search</h4>
             </div>
             <div class="col-LG">
                 <h4 class="m-3">recipe:</h4>
@@ -14,13 +14,16 @@
                 <input class="m-3 form-control mr-sm-2" name="search" type="search" placeholder="search" aria-label="Search">
                 <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
             </div>
+           
             <div class="col-LG">
-                <h4 class="m-3">Calorie max per serving:</h4>
+                <h4 class="m-3">Calorie max per serving: range(0-600)</h4>
             </div>
             <div class="col-LG">
-                <input class="m-3 form-control mr-sm-2" name="calorie" type="search" placeholder="search" aria-label="Search">
+                <!-- <input class="m-3 form-control mr-sm-2" name="calorie" type="search" placeholder="search" aria-label="Search"> -->
+                <input type="range" name="calorie" min=0 max=600 value=450 class="mt-4">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </div>
+            
         </form>
     </nav>
     {% if length is defined %}

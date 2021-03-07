@@ -4,13 +4,15 @@
   <div>
         <h3>Sign up</h3>
         <div>
-            <form action= "{{ url_for('user.create_user') }}" method='POST'>
+            <form action= "{{ url_for('auth.auth_register') }}" method='POST'>
                 <p>Username: <input type="text" name="username" placeholder="Username" autofocus=""></p>
                 <input type="password" name="password" placeholder="Password">
                 <input type="email" name="email" placeholder="Email">
                 <input type="text" name="first_name" placeholder="first name">
                 <input type="text" name="last_name" placeholder="Surname">
-                <input type="number" name="phone" placeholder="Contact number">
+                <input type="tel" name="phone" placeholder="Mobile number" pattern="[0-9]{10}">
+                
+
                 <button>Sign up</button>
             </form>
         </div>
