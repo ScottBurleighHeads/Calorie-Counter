@@ -3,6 +3,7 @@
 {% block content %} 
   <nav class="navbar navbar-light bg-light">
     <form class="form-inline" method="POST" action="{{ url_for('food.food_search') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
       <div class="container">
         <div class="row">
           <div class="col-LG">

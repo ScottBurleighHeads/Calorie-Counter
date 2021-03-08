@@ -3,6 +3,7 @@ from flask import Blueprint,json, render_template,request, jsonify, abort, redir
 from schemas.User_schema import user_schema, users_schema 
 from main import db
 from main import bcrypt
+from flask_login import login_user, current_user, logout_user
 from datetime import timedelta
 from flask_jwt_extended import create_access_token
 
@@ -20,11 +21,13 @@ def login_post():
     user = User.query.filter_by(username=username).first()
     
     if not user or not bcrypt.check_password_hash(user.password, password):
-        return abort(401, description="Incorrect username and password")
-    
-    expiry = timedelta(days=1) # Expires after one day
-    access_token = create_access_token(identity=str(user.id), expires_delta=expiry)
-    return jsonify({"token": access_token})
+        return abort(401, description="Incorrect username or password")
+    login_user(user)
+
+    return redirect(url_for("home.home_page"))
+    # expiry = timedelta(days=1) # Expires after one day
+    # access_token = create_access_token(identity=str(user.id), expires_delta=expiry)
+    # return jsonify({"token": access_token})
 
 @auth.route("/register",methods=["GET","POST"])
 def display_register():
@@ -46,3 +49,7 @@ def auth_register():
     db.session.commit()
     return redirect(url_for('home.home_page'))
     
+@auth.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('home.home_page'))

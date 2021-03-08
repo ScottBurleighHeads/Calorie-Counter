@@ -56,3 +56,4 @@ def test_get_shelters()
     data = response.get_json()
     assertEqual(data['city'],"Brisbane")
     
+46mins video
