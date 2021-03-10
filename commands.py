@@ -41,7 +41,6 @@ def seed_db():
         calorie.protein = random.randint(0,10)
         calorie.fat = random.randint(0,10)
         calorie.carb = random.randint(0,10)
-        calorie.image_food = fake.image_url()
         calorie.date = fake.date()
         calorie.user_id = random.randint(1,9)
         db.session.add(calorie)

@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 
 {% block content %} 
+{% if current_user is defined %}
+  <h4 class="pl-3 ml-3">Calories spent today: {{ summation }} Kcal</h4>
+{% endif %}
   <nav class="navbar navbar-light bg-light">
     <form class="form-inline" method="POST" action="{{ url_for('food.food_search') }}">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
@@ -21,9 +24,12 @@
           {% set num = 3 %}
           {% for z in range(length//3) %}
           {% set num = z*num %}
+          
+          
           <div class="row">
             {% for i in range(0+num,3+num) %}
-            <div class="col-sm ">
+            <div class="col-sm pb-5">
+                
                 {% if values %}
                   <h1>{{ values[i]["food"]["label"] }}</h1>
                   <h6>Calories: {{ values[i]["food"]["nutrients"]['ENERC_KCAL']|int }}</h4>
@@ -37,12 +43,17 @@
                   <h6>Fat: {{ values[i]["food"]["nutrients"]['FAT']|int }}</h6>
                   {% endif %}
                   {% if current_user.is_authenticated %}
-                  <form method="POST">
+                  <form method="POST" action="{{ url_for('food.food_search') }}">
+
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-                    <button type="submit" class="btn btn-secondary" formaction="{{ url_for('food.food_database') }}" >add</button>
+                    <input type="hidden" name="label" value="{{ values[i]['food']['label'] }}">
+                    <input type="hidden" name="calorie" value="{{ values[i]['food']['nutrients']['ENERC_KCAL']|int }}">
+                    <input type="hidden" name="carb" value="{{ values[i]['food']['nutrients']['CHOCDF']|int }}">
+                    <input type="hidden" name="protein" value="{{ values[i]['food']['nutrients']['PROCNT']|int }}">
+                    <input type="hidden" name="fat" value="{{ values[i]['food']['nutrients']['FAT']|int }}">
+                    <button style="background-color:#0000FF"onclick="alert('You added the item to the database')" type="submit" class="btn btn-secondary" formaction="{{ url_for('food.food_database') }}" >add</button>
                   </form>
-                    
-                    {% endif %}
+                  {% endif %}
                   {% if values[i]["food"]["image"] is defined %}
                     <img src='{{ values[i]["food"]["image"] }}' alt="Responsive image" class="img-thumbnail"> 
                   {% else %}
