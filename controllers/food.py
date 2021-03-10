@@ -23,12 +23,13 @@ def food_search():
     return render_template("Calorie_counter.html", values=values, length=length)
 
 @food.route("/store_calories", methods=["POST"])
-def food_database():
+def food_database(dictionary):
     
     import datetime
+    
     current_date = datetime.datetime.now()
     date_holder = current_date.date()
-    calories = current_user.nutrient_log.fat
+    calories = current_user.id
     print(calories)
     return '',204
 
