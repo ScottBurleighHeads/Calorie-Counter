@@ -36,6 +36,13 @@
                   {% if values[i]["food"]["nutrients"]['FAT'] is defined %}
                   <h6>Fat: {{ values[i]["food"]["nutrients"]['FAT']|int }}</h6>
                   {% endif %}
+                  {% if current_user.is_authenticated %}
+                  <form method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                    <button type="submit" class="btn btn-secondary" formaction="{{ url_for('food.food_database') }}" >add</button>
+                  </form>
+                    
+                    {% endif %}
                   {% if values[i]["food"]["image"] is defined %}
                     <img src='{{ values[i]["food"]["image"] }}' alt="Responsive image" class="img-thumbnail"> 
                   {% else %}

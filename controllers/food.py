@@ -1,6 +1,8 @@
-from flask import Blueprint,json, render_template,request
+from models.calorie_count import Nutrient_DB
+from flask import Blueprint , json, render_template, request 
 import requests
 import os
+from flask_login import login_user, current_user, logout_user
 food = Blueprint("food",__name__,url_prefix="/food")
 
 @food.route("/")
@@ -17,8 +19,20 @@ def food_search():
     dict_response=json.loads(response.text) 
     values=dict_response["hints"]
     length = len(dict_response["hints"])
+    
     return render_template("Calorie_counter.html", values=values, length=length)
 
+@food.route("/store_calories", methods=["POST"])
+def food_database():
+    
+    import datetime
+    current_date = datetime.datetime.now()
+    date_holder = current_date.date()
+    calories = current_user.nutrient_log.fat
+    print(calories)
+    return '',204
+
+    
 
 
 

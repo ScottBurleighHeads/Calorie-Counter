@@ -1,5 +1,6 @@
 from main import db 
 from flask_login import UserMixin
+from models.calorie_count import Nutrient_DB
 
 def get_user(user_id):
     user=User.query.filter_by(id=user_id).first()
@@ -14,6 +15,7 @@ class User(db.Model,UserMixin):
     first_name = db.Column(db.String(50))
     last_name = db.Column(db.String(50))
     phone = db.Column(db.Integer)
+    nutrient_log = db.relationship(Nutrient_DB, backref='user', lazy=True)
     
     def __repr__(self):
         return '<User %r>' % self.username
