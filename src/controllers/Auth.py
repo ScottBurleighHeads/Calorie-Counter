@@ -33,9 +33,10 @@ def display_register():
 
 @auth.route("/post_register", methods=["POST"])
 def auth_register():
+    
     new_user = User()
     new_user.username=request.form.get("username")
-    new_user.password=bcrypt.generate_password_hash("request.form.get('password')").decode("utf-8")
+    new_user.password=bcrypt.generate_password_hash(request.form.get('password')).decode("utf-8")
     user = User.query.filter_by(username=new_user.username).first()
     if user:
         return abort(401, description="Username is already registered")
@@ -45,6 +46,7 @@ def auth_register():
     new_user.phone=request.form.get("phone")
     db.session.add(new_user)
     db.session.commit()
+    login_user(new_user)
     return redirect(url_for('home.home_page'))
     
 @auth.route('/logout')
