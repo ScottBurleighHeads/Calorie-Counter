@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 {% block content %} 
+{% if not current_user.is_anonymous %}
+  <h4 class="pl-3 ml-3 pb-3 mb-3">Calories spent today: {{ summation }} Kcal</h4>
+{% endif %}
+  
     <nav class="navbar navbar-light bg-light">
         <form class="form-inline" method="POST" action="{{ url_for('recipe.recipe_search') }}">        
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
@@ -42,6 +46,7 @@
                             <p class="p-0 m-0">Protein:</p>
                             <p class="p-0 m-0">Carbohydrates:</p>
                             <p class="p-0 m-0">Fat:</p>
+                            
                         </ul>
                         </div>
                         <div class="col-sm">
@@ -50,6 +55,9 @@
                             <p class="p-0 m-0">{{ ((Recipe_data[i]["recipe"]["totalNutrients"]["PROCNT"]["quantity"]/total_weight)*100)|round(2) }} g</p>
                             <p class="p-0 m-0">{{ ((Recipe_data[i]["recipe"]["totalNutrients"]["CHOCDF"]["quantity"]/total_weight)*100)|round(2) }} g</p>
                             <p class="p-0 m-0">{{ ((Recipe_data[i]["recipe"]["totalNutrients"]["FAT"]["quantity"]/total_weight)*100)|round(2) }} g</p>
+                        </div>
+                        <div>
+                            <button style="background-color:#ad5067"onclick="alert('You added the item to the database')" type="submit" class="btn btn-secondary" formaction="{{ url_for('food.food_database') }}" >add</button>
                         </div>
                     </div>
                 </div>

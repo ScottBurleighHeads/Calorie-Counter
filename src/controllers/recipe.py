@@ -3,11 +3,13 @@
 from flask import Blueprint,json, render_template,request
 import requests
 import os
+from controllers.food import sum_calories
 recipe = Blueprint("recipe",__name__,url_prefix="/recipe")
 
 @recipe.route("/")
 def home_recipe():
-    return render_template("recipe.html")
+    summation = sum_calories()
+    return render_template("recipe.html",summation=summation)
 
 @recipe.route("/search", methods=["POST"])
 def recipe_search():
