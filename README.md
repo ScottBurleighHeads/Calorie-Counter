@@ -2,9 +2,22 @@
 
 This is my final full stack project for Coder Academy. Before beginning this project most of my knowledge was in the backend technologies mainly using RESTful api's. Since starting this project I have learnt a considerable amount about how the front end technology works spending most of my time using Jinja2 and Bootstrap. This project is still a work in progress but it is deployed. It is deployed on AWS where I used an EC2 ran by NGINX and an RDS powered by postgreSQL. At the moment I have used the t2.micro for both the EC2 and RDS. It is noticable. The RDS is connected to the EC2 via a database URI which I hope to change to a private IP before assessment is marked for functionality purposes. I hope to continue to work and learn on this project hopefully setting up a CI/CD pipeline next. I unfortunately ran out of time. The Website is temporary for marking and if not avaiable I can deploy upon request to seek employment. 
 
+The program has extra features to people who log in. If a user logs in they can store all the calories for the day onto the database. That database will continue to grow which I will hopefully set up graphs and stats for the user too see over time.
+
+To test the user log in features enter the usernames below:
+
+| Username | Password |
+|---|---|
+| user1 | 123 |
+| user2 | 123 |
+
+### Links to the website and github:
+
+Please take note that I changed the Website URL to an elastic IP. The one below URL is correct but the ones displayed in the images below are not correct.
+
 ||||
 |---|---|---|
-| R11 | Website URL: | http://13.211.200.115:5000/home/ |
+| R11 | Website URL: | http://54.153.218.136:5000/home/ |
 | R12 | Github: | https://github.com/ScottBurleighHeads/ScottMalone_T4A2-B |
 
 ### R2)	Employ and utilise proper source control methodology (git)
