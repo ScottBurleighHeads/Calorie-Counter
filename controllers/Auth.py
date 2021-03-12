@@ -17,7 +17,7 @@ def login():
 def login_post():
     
     username=request.form.get("username")
-    password=request.form.get("password")
+    password=request.form.get('password')
     user = User.query.filter_by(username=username).first()
     
     if not user or not bcrypt.check_password_hash(user.password, password):
