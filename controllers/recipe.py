@@ -18,10 +18,7 @@ def recipe_search():
         calorie_result = 1000
     APP_ID = os.environ.get("APP_ID_RECIPE")
     APP_KEY = os.environ.get("APP_KEY_RECIPE")
-    string = f"https://api.edamam.com/search?q={recipe}&app_id={APP_ID}&app_key={APP_KEY}&from=0&to=3&calories={calorie_result}&health=alcohol-free"
-    print(string)
     response = requests.get(f"https://api.edamam.com/search?q={recipe}&app_id={APP_ID}&app_key={APP_KEY}&from=0&to=10&calories={calorie_result}&health=alcohol-free")
-    
     dict_response=json.loads(response.text)
     length = len(dict_response["hits"])
 

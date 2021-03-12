@@ -57,3 +57,5 @@ def test_get_shelters()
     assertEqual(data['city'],"Brisbane")
     
 46mins video
+
+# gunicorn -b 0.0.0.0 "main:create_app()"

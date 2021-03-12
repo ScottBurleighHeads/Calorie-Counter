@@ -1,10 +1,11 @@
 from models.calorie_count import Nutrient_DB
 from models.user import User
 from main import db
-from flask import Blueprint , json, render_template, request 
+from flask import Blueprint , json, render_template, request, redirect, url_for 
 import requests
 import os
 import datetime
+import requests
 from flask_login import login_user, current_user, logout_user
 food = Blueprint("food",__name__,url_prefix="/food")
 
@@ -15,7 +16,7 @@ def food_home():
 
 @food.route("/search", methods=["POST"])
 def food_search():
-
+    
     APP_ID=os.environ.get("APP_ID")
     YOUR_APP_KEY=os.environ.get("YOUR_APP_KEY")
     result = request.form["search"]
@@ -25,7 +26,6 @@ def food_search():
     length = len(dict_response["hints"])  
     if current_user:
         summation = sum_calories()  
-    
     return render_template("Calorie_counter.html", values=values, length=length, summation=summation)
 
 @food.route("/store_calories", methods=["POST"])
@@ -53,7 +53,7 @@ def food_database():
     db.session.add(nutrients)
     db.session.commit()
 
-    return '',204
+    return redirect(url_for("food.food_home"))
 
 # @food.route("/api", methods=["GET"])
 # def api():
@@ -64,11 +64,17 @@ def food_database():
 #     return dict_response["hints"]["food"][] 
 
 def sum_calories():
+    
     current_date = datetime.datetime.now()
-    query = Nutrient_DB.query.filter_by(user_id=current_user.id, date=current_date.date())
 
-    summation = 0
-    for item in query:
-        summation += item.calories
+    if not current_user.is_anonymous:
+        query = Nutrient_DB.query.filter_by(user_id=current_user.id, date=current_date.date())
+        summation = 0
+        for item in query:
+            summation += item.calories
 
-    return summation
+        return summation
+    
+    return "failed"
+
+

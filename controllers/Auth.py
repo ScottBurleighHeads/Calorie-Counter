@@ -13,7 +13,7 @@ auth = Blueprint("auth",__name__,url_prefix="/login")
 def login():
     return render_template("login.html")
 # There are login and log out test clients
-@auth.route("/",methods=["POST"])
+@auth.route("/authorise",methods=["POST"])
 def login_post():
     
     username=request.form.get("username")
@@ -25,9 +25,7 @@ def login_post():
     login_user(user)
 
     return redirect(url_for("home.home_page"))
-    # expiry = timedelta(days=1) # Expires after one day
-    # access_token = create_access_token(identity=str(user.id), expires_delta=expiry)
-    # return jsonify({"token": access_token})
+   
 
 @auth.route("/register",methods=["GET","POST"])
 def display_register():

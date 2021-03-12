@@ -14,7 +14,7 @@ class User(db.Model,UserMixin):
     password = db.Column(db.String(400),nullable=False)
     first_name = db.Column(db.String(50))
     last_name = db.Column(db.String(50))
-    phone = db.Column(db.Integer)
+    phone = db.Column(db.BigInteger)
     nutrient_log = db.relationship(Nutrient_DB, backref='user', lazy=True)
     
     def __repr__(self):

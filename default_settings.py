@@ -20,17 +20,19 @@ class DevelopmentConfig(Config):
     DEBUG = True
 
 class ProductionConfig(Config):
-    @property
-    def JWT_SECRET_KEY(self):
-        value = os.environ.get("SECRET")
+    pass
+    # @property
+    # def JWT_SECRET_KEY(self):
+    #     value = os.environ.get("SECRET")
 
-        if not value:
-            raise ValueError("JWT Secret Key is not set")
+    #     if not value:
+    #         raise ValueError("JWT Secret Key is not set")
         
-        return value
+    #     return value
 
 class TestingConfig(Config):
     TESTING=True
+    WTF_CSRF_ENABLED = False
     @property
     def SQLALCHEMY_DATABASE_URI(self):
         value = os.environ.get("DB_URI_TEST")
