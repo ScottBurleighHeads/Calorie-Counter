@@ -11,7 +11,7 @@ To test the user log in features enter the usernames below:
 | user1 | 123 |
 | user2 | 123 |
 
-### Links to the website and github:
+### Links to the website and github( The link was active during assessment. I can deploy if requested ):
 
 Please take note that I changed the Website URL to an elastic IP. The one below URL is correct but the ones displayed in the images below are not correct.
 
