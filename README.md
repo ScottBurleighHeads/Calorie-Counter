@@ -1,4 +1,4 @@
-# T4A2-B - Full Stack Application - Part B
+# Calorie Counter
 
 This is my final full stack project for Coder Academy. Before beginning this project most of my knowledge was in the backend technologies mainly using RESTful api's. Since starting this project I have learnt a considerable amount about how the front end technology works spending most of my time using Jinja2 and Bootstrap. This project is still a work in progress but it is deployed. It is deployed on AWS where I used an EC2 ran by NGINX and an RDS powered by postgreSQL. At the moment I have used the t2.micro for both the EC2 and RDS. It is noticable. The RDS is connected to the EC2 via a database URI which I hope to change to a private IP before assessment is marked for functionality purposes. I hope to continue to work and learn on this project hopefully setting up a CI/CD pipeline next. I unfortunately ran out of time. The Website is temporary for marking and if not avaiable I can deploy upon request to seek employment. 
 
